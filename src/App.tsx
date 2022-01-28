@@ -1,5 +1,7 @@
+import FormWrapper from "./FormWrapper";
+
 const App = (): JSX.Element => {
-  return <div>hello</div>;
+  return <FormWrapper />;
 };
 
 export default App;
