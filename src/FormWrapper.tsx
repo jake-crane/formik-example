@@ -11,6 +11,15 @@ const schema: SchemaOf<Values> = Yup.object({
     .max(20, "Must be 20 characters or less")
     .required("Required"),
   email: Yup.string().email("Invalid email address").required("Required"),
+  addresses: Yup.array().of(
+    Yup.object({
+      streetAddress1: Yup.string().required(),
+      streetAddress2: Yup.string(),
+      city: Yup.string().required(),
+      state: Yup.string().required(),
+      postalCode: Yup.string().required(),
+    })
+  ),
 });
 
 const FormWrapper = (): JSX.Element => {
@@ -18,6 +27,15 @@ const FormWrapper = (): JSX.Element => {
     firstName: "",
     lastName: "",
     email: "",
+    addresses: [
+      {
+        streetAddress1: "",
+        streetAddress2: "",
+        city: "",
+        state: "",
+        postalCode: "",
+      },
+    ],
   };
 
   const handleSubmit = (values: Values) => {
